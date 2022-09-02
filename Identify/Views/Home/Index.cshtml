@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: YELLOW;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Add padding to containers */
+        .container {
+            padding: 16px;
+            background-color:lightpink;
+        }
+
+               hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+ 
+    </style>
+</head>
+<body>
+
+    <form>
+        <div class="container">
+            <h1>GOLD RATE CALCULATOR</h1>
+            <p>Please fill below details for calculate your gold rate.</p>
+            <hr>
+
+            <label for="Gold"><b>Gold</b></label>
+            <input type="text" placeholder="Enter the gold value" name="Gold" id="Gold" required>
+            <br>
+            <br>
+
+            <label for="Unit"><b>Unit</b></label>
+            <select name="unit" id="unit">
+                <option value="gram">gram</option>
+                <option value="kilo">kilo</option>
+
+            </select>
+            <br>
+            <br>
+
+
+            <label for="karat"><b>karat</b></label>
+            <select name="karat" id="karat">
+                <option value="22karat">22karat</option>
+                <option value="24karat">24karat</option>
+
+            </select>
+            <div id="result">r</div>
+            <hr>
+
+            <button type="submit" id="calculate">CALCULTE</button>
+
+
+        </div>
+    </form>
+
+
+    @*<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var input = document.getElementById('Gold');
+            if (localStorage['Gold']) { // if job is set
+                input.value = localStorage['Gold']; // set the value
+            }
+            input.onchange = function () {
+                localStorage['Gold'] = this.value; // change localStorage on change
+            }
+        });
+    </script>*@
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="~/js/Calculate.js"></script>
+</body>
+</html>

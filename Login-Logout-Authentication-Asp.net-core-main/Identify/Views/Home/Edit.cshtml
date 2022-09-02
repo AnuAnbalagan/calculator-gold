@@ -1,0 +1,72 @@
+﻿@model ProfileEditModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+}
+
+<div class="row py-5 mt-4 align-items-center">
+
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+        <h1>Update</h1>
+        <p>Current Covor photo</p>
+        <img height="100" src="@Url.Content(Model.CovorPhoto)"/>
+        <p>Current profile photo</p>
+        <img height="100" src="@Url.Content(Model.ProfilePhoto)"/>
+    </div>
+
+    <div class="col-md-7 col-lg-6 ml-auto">
+        <form method="post" asp-area="" asp-controller="Home" asp-action="Save" enctype="multipart/form-data">
+            @Html.HiddenFor(s=>s.ProfilePhoto)
+            @Html.HiddenFor(s=>s.CovorPhoto)
+            <div class="row">
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="Name" type="text" placeholder="Name" class="form-control bg-white border-left-0 border-md" required>
+
+                </div>
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="Address" type="text" placeholder="Address" class="form-control bg-white border-left-0 border-md" required>
+
+                </div>
+                
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="">
+                        <label>Profile photo</label>
+                    </div>
+                    <div>
+                        <input asp-for="ProfilePhotoFile" type="file" value="@Model.ProfilePhoto" placeholder="Profile photo" class="form-control">
+                    </div>
+                </div>
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="">
+                        <label>Covor photo</label>
+                    </div>
+                    <div>
+                        <input asp-for="CovorPhotoFile" type="file" value="@Model.CovorPhoto" placeholder="Profile photo" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group col-lg-12 mx-auto mb-0">
+                    <button type="submit" class="btn btn-primary btn-block py-2">
+                        <span class="font-weight-bold">Update</span>
+                    </button>
+                </div>
+
+
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold"> <a asp-area="" asp-action="Index" asp-controller="Home" class="text-primary ml-2">Back to Home</a></p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

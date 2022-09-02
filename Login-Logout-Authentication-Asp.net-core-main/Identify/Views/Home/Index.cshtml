@@ -1,0 +1,47 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-fluid overcover">
+    <div class="container profile-box">
+        <div class="cover-image row">
+            @if (Model.CovorPhoto != null)
+            {
+                <img src="@Url.Content(Model.CovorPhoto)" />
+            }
+            else
+            {
+                <img src="~/images/bloogs-6.jpg" />
+            }
+        </div>
+        <div class="row">
+            
+            <div class="col-lg-5 col-md-5 leftgh">
+                <div class="img-box">
+                    @if (Model.ProfilePhoto != null)
+                    {
+                        <img src="@Url.Content(Model.ProfilePhoto)" />
+                    }
+                    else
+                    {
+                        <img src="~/images/gallery/gallery_12.jpg" />
+                    }
+                </div>
+                <div class="name-det">
+                    <h2>@Model.FullName -<a asp-action="Edit" asp-controller="Home">Edit<i class="fa fa-edit"></i></a></h2> 
+                    <h3>Address</h3>
+                    <p>
+                        @Model.Address
+                    </p>
+                    <h3>Actions</h3>
+
+                    <p><a asp-action="ChangePassword" asp-controller="Account">Change password<i class="fa fa-edit"></i></a></p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

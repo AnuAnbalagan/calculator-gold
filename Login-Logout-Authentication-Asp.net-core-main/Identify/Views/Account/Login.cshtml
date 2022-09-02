@@ -1,0 +1,59 @@
+﻿@model LoginViewModel
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_LayoutAuth.cshtml";
+    var externals = await SignInManager.GetExternalAuthenticationSchemesAsync();
+}
+
+<div class="row py-5 mt-4 align-items-center">
+
+    <div class="col-md-5 pr-lg-5 mb-5 mb-md-0">
+        <h1>Login</h1>
+    </div>
+
+    <div class="col-md-7 col-lg-6 ml-auto">
+        <form method="post" asp-area="" asp-controller="Account" asp-action="Login">
+            <div class="row">
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="Email" type="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md" required>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+
+                </div>
+
+                <div class="input-group col-lg-12 mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white px-4 border-md border-right-0">
+                            <i class="fa fa-envelope text-muted"></i>
+                        </span>
+                    </div>
+                    <input asp-for="Password" type="password" placeholder="********" class="form-control bg-white border-left-0 border-md" required>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+
+                </div>
+                <div class="input-group col-lg-12 mb-4">
+                    <span asp-validation-for="IncorrectInput" class="text-danger"></span>
+
+                </div>
+                @Html.HiddenFor(s => s.ReturnUrl)
+                <div class="form-group col-lg-12 mx-auto mb-0">
+                    <button type="submit" class="btn btn-primary btn-block py-2">
+                        <span class="font-weight-bold">Login</span>
+                    </button>
+                </div>
+
+
+                <div class="text-center w-100">
+                    <p class="text-muted font-weight-bold">Need to and account? <a asp-area="" asp-action="Register" asp-controller="Account" class="text-primary ml-2">Create here</a></p>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
